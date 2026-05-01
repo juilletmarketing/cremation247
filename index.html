@@ -605,6 +605,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 <!-- React + Tweaks -->
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -612,6 +616,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" src="app.jsx"></script>
 <script src="zoho-utm.js"></script>
+
+<!-- H1/H2 Blur → Sharp Animation -->
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+ScrollTrigger.batch("h1, h2", {
+  onEnter: (batch) => {
+    gsap.fromTo(batch,
+      { filter: "blur(8px)", scale: 0.9, opacity: 0 },
+      { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.7, ease: "back.out", stagger: 0.1 }
+    );
+  },
+  start: "top 85%",
+  once: true
+});
+</script>
 
 <!-- MODAL ZOHO FORM -->
 <div id="zoho-modal-overlay" style="display:none;">
