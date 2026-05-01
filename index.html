@@ -10,6 +10,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
+<!-- Mobile nav adjustments -->
+<style>
+  @media (max-width: 768px) {
+    .nav-cta .btn.sm {
+      display: none;
+    }
+    .nav-phone {
+      display: inline-block;
+    }
+    .nav-phone a {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--sage);
+      color: var(--cream);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .nav-phone a:hover {
+      background: var(--sage-2);
+    }
+  }
+</style>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -515,14 +541,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FINAL CTA -->
 <section id="planifier" style="padding: 60px 0;">
   <div class="wrap">
-    <div class="final">
-      <div class="seal"><img src="uploads/IconoirLeaf.svg" alt="" aria-hidden="true"></div>
-      <span class="eyebrow" style="color: var(--sage-3);">Commencer</span>
-      <h2 style="margin-top: 20px;">Un dernier geste qui <em>ressemble</em> à celui ou celle qu'on aime.</h2>
-      <p>Prenez 10 minutes pour préparer un pré-arrangement, ou parlez immédiatement à une conseillère. Aucune obligation, simplement un geste qui peut tout changer.</p>
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="#" class="btn">Planifier une crémation<span class="arrow">→</span></a>
-        <a href="tel:4385006288" class="btn ghost">(438) 500-6288</a>
+    <div class="final" style="background: var(--accent); color: var(--cream); position: relative; overflow: hidden;">
+      <!-- Texture overlay on background -->
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 70%); mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 70%);">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 0.5px, transparent 0); background-size: 8px 8px;"></div>
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.25) 1px, transparent 0); background-size: 24px 24px;"></div>
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 2px, transparent 0); background-size: 56px 56px;"></div>
+      </div>
+      <!-- Content -->
+      <div style="position: relative; z-index: 10;">
+        <span class="eyebrow" style="color: var(--sage-3); display: none;">Commencer</span>
+        <h2 style="margin-top: 20px;">Un dernier geste qui <em>ressemble</em> à celui ou celle qu'on aime.</h2>
+        <p>Prenez 10 minutes pour préparer un pré-arrangement, ou parlez immédiatement à une conseillère. Aucune obligation, simplement un geste qui peut tout changer.</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="btn">Planifier une crémation<span class="arrow">→</span></a>
+          <a href="tel:4385006288" class="btn ghost">(438) 500-6288</a>
+        </div>
       </div>
     </div>
   </div>
