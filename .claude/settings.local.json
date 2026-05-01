@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rtk git *)",
+      "Bash(mkdir -p ~/.ssh)",
+      "Bash(cp \"uploads/cremation247-coolify-juillet.2026-04-30.private-key.pem\" ~/.ssh/id_rsa)",
+      "Bash(chmod 600 ~/.ssh/id_rsa)",
+      "Bash(ssh -T git@github.com)",
+      "PowerShell(Get-Service ssh-agent | Start-Service -ErrorAction SilentlyContinue; ssh-add $env:USERPROFILE\\\\.ssh\\\\id_rsa 2>&1)",
+      "PowerShell(Start-Service ssh-agent -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; ssh-add $env:USERPROFILE\\\\.ssh\\\\id_rsa 2>&1)"
+    ]
+  }
+}
