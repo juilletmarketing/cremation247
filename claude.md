@@ -33,7 +33,7 @@ Cremation 24/7 specializes in eco-responsible cremation services that offset the
 - **Palette**: Sage/Cream warm beige with green accents
 - **Fonts**: Instrument Serif (headings) + Inter Tight (body)
 - **Alternative palettes**: Brume/Blue-green, Terre/Linen, Nuit Sauge
-- **Color Variables**: See Landing Page.html :root section
+- **Color Variables**: See index.html :root section
 
 ## Important Content Notes
 

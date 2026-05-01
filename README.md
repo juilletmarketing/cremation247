@@ -24,7 +24,7 @@ Crémation 24/7 est une filiale de la **Forêt de la seconde vie**. Le service s
 
 ## Structure du projet
 
-- `Landing Page.html` : Point d'entrée principal contenant la structure et la logique d'intégration Zoho.
+- `index.html` : Point d'entrée principal contenant la structure et la logique d'intégration Zoho.
 - `app.jsx` : Logique de l'application React pour le panneau de personnalisation (Tweaks Panel) et les animations au défilement.
 - `styles.css` : Système de design complet et règles de mise en page.
 - `tweaks-panel.jsx` : Composants utilitaires pour l'interface de personnalisation en direct.
@@ -73,7 +73,7 @@ Comme ce projet utilise Babel Standalone et React via CDN, vous pouvez le lancer
    ```
 
 3. **Ouvrir dans le navigateur :**
-   Accédez à `http://localhost:8000/Landing%20Page.html`.
+   Accédez à `http://localhost:8000/index.html`.
 
 ## Directives de marque
 

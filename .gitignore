@@ -1,1 +1,16 @@
+# Docker
+.git
+.dockerignore
+Dockerfile
 
+# Sensible
+uploads/*.pem
+
+# Documentation & Logs
+README.md
+claude.md
+.claude
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
