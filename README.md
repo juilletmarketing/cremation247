@@ -6,7 +6,7 @@ Ce dépôt contient le code source de la page de destination de **Crémation 24/
 
 Crémation 24/7 est une filiale de la **Forêt de la seconde vie**. Le service se concentre sur une crémation écoresponsable où l'empreinte carbone est neutralisée en moins de 24 mois grâce à des initiatives de reforestation.
 
-- **Objectif principal :** Génération de prospects (leads) pour les préarrangements et les services de crémation immédiate.
+- **Objectif principal :** Génération de prospects (leads) pour les services de crémation planifiées et immédiates.
 - **Public cible :** Personnes soucieuses de l'environnement dans le Grand Montréal, à la recherche d'options funéraires modernes, respectueuses et durables.
 - **Proposition de valeur :** Impact carbo-négatif (-250 kg de CO₂ par arbre sur 10 ans), soutien humain 24/7 et protection des forêts mémorielles à perpétuité.
 
