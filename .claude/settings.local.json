@@ -8,7 +8,12 @@
       "Bash(ssh -T git@github.com)",
       "PowerShell(Get-Service ssh-agent | Start-Service -ErrorAction SilentlyContinue; ssh-add $env:USERPROFILE\\\\.ssh\\\\id_rsa 2>&1)",
       "PowerShell(Start-Service ssh-agent -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; ssh-add $env:USERPROFILE\\\\.ssh\\\\id_rsa 2>&1)",
-      "WebFetch(domain:scroll.locomotive.ca)"
+      "WebFetch(domain:scroll.locomotive.ca)",
+      "Bash(npx serve *)",
+      "Bash(Get-ChildItem -Path \"G:\\\\Drive partagés\\\\FSV\\\\back-up\\\\14-Marketing\\\\Tour du Bloc -Logos - Branding\\\\Polices et couleurs\" -Filter \"*.ttf\" -Recurse)",
+      "Bash(Select-Object FullName, Name)",
+      "PowerShell(Get-ChildItem -Path \"G:\\\\Drive partagés\\\\FSV\\\\back-up\\\\14-Marketing\\\\Tour du Bloc -Logos - Branding\\\\Polices et couleurs\" | ForEach-Object { $_.FullName })",
+      "PowerShell(New-Item -ItemType Directory -Path \"c:\\\\Users\\\\Jacob\\\\Projects\\\\work\\\\Cremation247\\\\fonts\" -Force)"
     ]
   }
 }
