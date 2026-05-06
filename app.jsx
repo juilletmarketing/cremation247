@@ -1,6 +1,5 @@
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     "palette": "Sauge \/ Crème",
-    "typePair": "Instrument Serif + Inter Tight",
     "headline": "Un dernier geste qui redonne à la terre.",
     "urgentBar": true,
     "darkFinal": true
@@ -11,12 +10,6 @@
     "Brume / Bleu-vert":{ bg:"#ECEEEA", bg2:"#DFE3DD", ink:"#1A2224", ink2:"#384043", muted:"#6B7375", line:"#BDC5C2", line2:"#CFD6D2", sage:"#5F7D7A", sage2:"#7E9C98", sage3:"#C2D0CC", cream:"#F4F6F2", accent:"#253233" },
     "Terre / Lin":  { bg:"#F2ECE0", bg2:"#E6DECC", ink:"#2A2520", ink2:"#463E35", muted:"#7A6F62", line:"#CBBFA8", line2:"#D9CEB8", sage:"#8B6A3E", sage2:"#A98A5E", sage3:"#D9C5A0", cream:"#F8F2E4", accent:"#3A2F23" },
     "Nuit sauge":   { bg:"#1A2220", bg2:"#222B28", ink:"#ECEAE0", ink2:"#C8CCC1", muted:"#8A9088", line:"#3B4640", line2:"#2B3431", sage:"#A9B89A", sage2:"#8FA07C", sage3:"#5E6E56", cream:"#ECEAE0", accent:"#0E1513" }
-  };
-
-  const TYPE_PAIRS = {
-    "Instrument Serif + Inter Tight": { serif:"'Instrument Serif', serif", sans:"'Inter Tight', system-ui, sans-serif" },
-    "EB Garamond + Söhne-alike":      { serif:"'EB Garamond', Georgia, serif", sans:"'Inter Tight', system-ui, sans-serif" },
-    "Cormorant + Work Sans":          { serif:"'Cormorant Garamond', serif", sans:"'Work Sans', system-ui, sans-serif" }
   };
 
   function App(){
@@ -39,24 +32,6 @@
       r.style.setProperty('--cream', p.cream);
       r.style.setProperty('--accent', p.accent);
     }, [tweaks.palette]);
-
-    React.useEffect(() => {
-      const tp = TYPE_PAIRS[tweaks.typePair] || TYPE_PAIRS["Instrument Serif + Inter Tight"];
-      const r = document.documentElement;
-      r.style.setProperty('--serif', tp.serif);
-      r.style.setProperty('--sans', tp.sans);
-      // inject google font import if needed
-      if (tweaks.typePair === "EB Garamond + Söhne-alike" && !document.getElementById('gf-eb')){
-        const l = document.createElement('link'); l.id='gf-eb'; l.rel='stylesheet';
-        l.href='https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap';
-        document.head.appendChild(l);
-      }
-      if (tweaks.typePair === "Cormorant + Work Sans" && !document.getElementById('gf-cg')){
-        const l = document.createElement('link'); l.id='gf-cg'; l.rel='stylesheet';
-        l.href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Work+Sans:wght@300;400;500;600&display=swap';
-        document.head.appendChild(l);
-      }
-    }, [tweaks.typePair]);
 
     const DEFAULT_HEADLINE_HTML = 'Un dernier geste<br>\nqui <em>redonne</em><br>\nà la terre.';
     React.useEffect(() => {
@@ -99,11 +74,6 @@
           <TweakRadio label="Ambiance" value={tweaks.palette}
             options={Object.keys(PALETTES)}
             onChange={v => setTweak('palette', v)} />
-        </TweakSection>
-        <TweakSection title="Typographie">
-          <TweakRadio label="Paire" value={tweaks.typePair}
-            options={Object.keys(TYPE_PAIRS)}
-            onChange={v => setTweak('typePair', v)} />
         </TweakSection>
         <TweakSection title="Contenu">
           <TweakText label="Titre hero" value={tweaks.headline}

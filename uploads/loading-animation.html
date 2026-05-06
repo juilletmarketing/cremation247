@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Forêt de la Seconde Vie — Chargement</title>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--bg, #f6f4ef);
+    color: var(--ink, #14201a);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 600ms ease;
+  }
+
+  .stage {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 48px;
+  }
+
+  .loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 44px;
+  }
+
+  .logo {
+    position: relative;
+    width: min(56vmin, 480px);
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Every layer paints inside the silhouette via mask-image */
+  .logo .ghost,
+  .logo .layer {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-image: url("logo.png");
+            mask-image: url("logo.png");
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+            mask-position: center;
+    -webkit-mask-size: contain;
+            mask-size: contain;
+    background: var(--ink);
+    will-change: clip-path, opacity, transform;
+  }
+  .logo .ghost { background: var(--ghost); }
+
+  /* ──────────────────────────────────────────────────────────────────────────
+     VARIANT A — HEARTBEAT
+     Radial bloom from the figure's heart, layered with a subtle breathing scale.
+     Feels: alive, calm, exhaling.
+  ────────────────────────────────────────────────────────────────────────── */
+  .logo.heartbeat .layer.core {
+    clip-path: ellipse(0% 0% at 50% 50%);
+    animation:
+      hbCore var(--duration) cubic-bezier(0.22, 1, 0.36, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes hbCore {
+    0%   { clip-path: ellipse(0% 0% at 50% 50%); opacity: 0; }
+    8%   { opacity: 1; }
+    35%  { clip-path: ellipse(28% 44% at 50% 50%); }
+    60%  { clip-path: ellipse(40% 60% at 50% 50%); }
+    100% { clip-path: ellipse(40% 60% at 50% 50%); opacity: 1; }
+  }
+  .logo.heartbeat .layer.branches {
+    clip-path: ellipse(0% 0% at 50% 47%);
+    animation:
+      hbBranch var(--duration) cubic-bezier(0.16, 0.84, 0.3, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes hbBranch {
+    0%   { clip-path: ellipse(0% 0% at 50% 47%); }
+    20%  { clip-path: ellipse(8% 12% at 50% 47%); }
+    55%  { clip-path: ellipse(45% 62% at 50% 47%); }
+    80%  { clip-path: ellipse(75% 90% at 50% 47%); }
+    100% { clip-path: ellipse(75% 90% at 50% 47%); }
+  }
+  .logo.heartbeat .layer.reach {
+    clip-path: ellipse(0% 0% at 50% 44%);
+    animation:
+      hbReach var(--duration) cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes hbReach {
+    0%, 35%   { clip-path: ellipse(0% 0% at 50% 44%); opacity: 0; }
+    45%       { opacity: 1; }
+    75%       { clip-path: ellipse(60% 78% at 50% 44%); }
+    92%       { clip-path: ellipse(110% 130% at 50% 44%); }
+    100%      { clip-path: ellipse(110% 130% at 50% 44%); opacity: 1; }
+  }
+  .logo.heartbeat {
+    animation: hbBreathe var(--duration) cubic-bezier(0.45, 0, 0.2, 1) infinite;
+    transform-origin: 50% 50%;
+  }
+  @keyframes hbBreathe {
+    0%   { transform: scale(0.985); }
+    60%  { transform: scale(1.012); }
+    92%  { transform: scale(1.000); }
+    100% { transform: scale(0.985); }
+  }
+
+  /* ──────────────────────────────────────────────────────────────────────────
+     VARIANT B — SAPLING
+     Bottom-up upward growth, like watching a sprout climb. Roots appear first
+     (tapped from a small disc near them), then the shape unfurls upward.
+     Feels: deliberate, earthy, ascending.
+  ────────────────────────────────────────────────────────────────────────── */
+  .logo.sapling .layer.core {
+    /* roots: a small bloom near the base */
+    clip-path: ellipse(0% 0% at 50% 80%);
+    animation:
+      spRoots var(--duration) cubic-bezier(0.34, 0.02, 0.2, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes spRoots {
+    0%   { clip-path: ellipse(0%  0%  at 50% 80%); opacity: 0; }
+    8%   { opacity: 1; }
+    25%  { clip-path: ellipse(35% 12% at 50% 80%); }
+    100% { clip-path: ellipse(35% 12% at 50% 80%); opacity: 1; }
+  }
+  .logo.sapling .layer.branches {
+    /* trunk + body: vertical inset wipe upward */
+    clip-path: inset(100% 0 0 0);
+    animation:
+      spTrunk var(--duration) cubic-bezier(0.34, 0.02, 0.2, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes spTrunk {
+    0%, 12%  { clip-path: inset(100% 0 0 0); }
+    70%      { clip-path: inset(0%   0 0 0); }
+    100%     { clip-path: inset(0%   0 0 0); }
+  }
+  .logo.sapling .layer.reach {
+    /* canopy emphasis: small bloom at the top, scales up to catch leaf tips */
+    clip-path: ellipse(0% 0% at 50% 30%);
+    animation:
+      spCanopy var(--duration) cubic-bezier(0.16, 0.84, 0.3, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes spCanopy {
+    0%, 50%   { clip-path: ellipse(0%   0%   at 50% 30%); opacity: 0; }
+    62%       { opacity: 1; }
+    90%       { clip-path: ellipse(120% 95%  at 50% 30%); }
+    100%      { clip-path: ellipse(120% 95%  at 50% 30%); opacity: 1; }
+  }
+  .logo.sapling {
+    animation: spLift var(--duration) cubic-bezier(0.45, 0, 0.2, 1) infinite;
+    transform-origin: 50% 100%;
+  }
+  @keyframes spLift {
+    0%   { transform: scale(0.97) translateY(2%); }
+    70%  { transform: scale(1.005) translateY(0%); }
+    92%  { transform: scale(1.000) translateY(0%); }
+    100% { transform: scale(0.97) translateY(2%); }
+  }
+
+  /* ──────────────────────────────────────────────────────────────────────────
+     VARIANT C — CONSTELLATION
+     Three asymmetric blooms appear in sequence at offset positions, each
+     overlapping in time so leaves seem to twinkle on in waves before the
+     silhouette unifies. Feels: ethereal, scattered light, magical.
+  ────────────────────────────────────────────────────────────────────────── */
+  .logo.constellation .layer.core {
+    /* lower-right wave */
+    clip-path: ellipse(0% 0% at 64% 62%);
+    animation:
+      ctA var(--duration) cubic-bezier(0.22, 1, 0.36, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes ctA {
+    0%   { clip-path: ellipse(0%  0%  at 64% 62%); opacity: 0; }
+    8%   { opacity: 1; }
+    45%  { clip-path: ellipse(55% 60% at 64% 62%); }
+    100% { clip-path: ellipse(55% 60% at 64% 62%); opacity: 1; }
+  }
+  .logo.constellation .layer.branches {
+    /* upper-left wave */
+    clip-path: ellipse(0% 0% at 34% 38%);
+    animation:
+      ctB var(--duration) cubic-bezier(0.16, 0.84, 0.3, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes ctB {
+    0%, 18%   { clip-path: ellipse(0%  0%  at 34% 38%); opacity: 0; }
+    28%       { opacity: 1; }
+    65%       { clip-path: ellipse(60% 65% at 34% 38%); }
+    100%      { clip-path: ellipse(60% 65% at 34% 38%); opacity: 1; }
+  }
+  .logo.constellation .layer.reach {
+    /* unifying full bloom from top-center, sweeps the rest */
+    clip-path: ellipse(0% 0% at 50% 25%);
+    animation:
+      ctC var(--duration) cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+      fadeOut var(--duration) linear infinite;
+  }
+  @keyframes ctC {
+    0%, 42%   { clip-path: ellipse(0%   0%   at 50% 25%); opacity: 0; }
+    55%       { opacity: 1; }
+    88%       { clip-path: ellipse(120% 140% at 50% 25%); }
+    100%      { clip-path: ellipse(120% 140% at 50% 25%); opacity: 1; }
+  }
+  .logo.constellation {
+    animation: ctShimmer var(--duration) cubic-bezier(0.45, 0, 0.2, 1) infinite;
+    transform-origin: 50% 50%;
+  }
+  @keyframes ctShimmer {
+    0%   { transform: scale(0.98) rotate(-0.4deg); }
+    50%  { transform: scale(1.01) rotate(0.3deg); }
+    92%  { transform: scale(1.000) rotate(0deg); }
+    100% { transform: scale(0.98) rotate(-0.4deg); }
+  }
+
+  /* Final unifying pass — ensures fully-rendered moment before loop fade */
+  .logo .layer.full {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+    animation:
+      fullSettle var(--duration) ease-out infinite,
+      fadeOut    var(--duration) linear infinite;
+  }
+  @keyframes fullSettle {
+    0%, 80% { opacity: 0; }
+    90%     { opacity: 1; }
+    100%    { opacity: 1; }
+  }
+
+  /* End-of-cycle fade so the restart doesn't snap. */
+  @keyframes fadeOut {
+    0%, 92%   { /* keep current opacity */ }
+    99%, 100% { opacity: 0; }
+  }
+
+  /* Dots */
+  .dots { display: inline-flex; gap: 8px; }
+  .dots span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--muted);
+    opacity: 0.25;
+    animation: dot 1.4s ease-in-out infinite;
+  }
+  .dots span:nth-child(2) { animation-delay: 0.2s; }
+  .dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dot {
+    0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+    40%           { opacity: 1;    transform: translateY(-3px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo, .logo .layer { animation: none !important; clip-path: inset(0 0 0 0) !important; opacity: 1 !important; transform: none !important; }
+    .dots span { animation: none; opacity: 0.6; }
+  }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "variant": "heartbeat",
+      "duration": 2700,
+      "palette": [
+        "#0e1612",
+        "#e9efe4",
+        "#6b7a6f"
+      ]
+    }/*EDITMODE-END*/;
+
+    // Curated palettes: [bg, ink, muted]
+    const PALETTES = [
+      ["#f6f4ef", "#14201a", "#7a8a7e"], // warm parchment + forest
+      ["#0e1612", "#e9efe4", "#6b7a6f"], // midnight forest
+      ["#eae2d0", "#2b1f12", "#8b7a5c"], // bone & bark
+      ["#dfe7df", "#1a3a2c", "#4f6b56"], // sage on mist
+    ];
+
+    function App() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      const [bg, ink, muted] = t.palette;
+      // ghost = ink at 6% — derived so it always tracks the palette
+      const ghost = ink + "10"; // append alpha hex
+
+      const cssVars = {
+        "--bg": bg,
+        "--ink": ink,
+        "--muted": muted,
+        "--ghost": ghost,
+        "--duration": `${t.duration}ms`,
+      };
+
+      // Apply to <html> so body bg responds via the --bg var.
+      React.useEffect(() => {
+        Object.entries(cssVars).forEach(([k, v]) =>
+          document.documentElement.style.setProperty(k, v)
+        );
+      }, [bg, ink, muted, t.duration]);
+
+      return (
+        <main className="stage">
+          <div className="loader" role="status" aria-label="Chargement en cours">
+            <div className={`logo ${t.variant}`} key={t.variant /* restart anim on swap */}>
+              <div className="ghost"          aria-hidden="true"></div>
+              <div className="layer core"     aria-hidden="true"></div>
+              <div className="layer branches" aria-hidden="true"></div>
+              <div className="layer reach"    aria-hidden="true"></div>
+              <div className="layer full"     aria-hidden="true"></div>
+            </div>
+            <div className="dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <TweaksPanel title="Tweaks">
+            <TweakSection label="Bloom character" />
+            <TweakRadio
+              label="Variant"
+              value={t.variant}
+              options={['heartbeat', 'sapling', 'constellation']}
+              onChange={(v) => setTweak('variant', v)}
+            />
+
+            <TweakSection label="Tempo" />
+            <TweakSlider
+              label="Cycle"
+              value={t.duration}
+              min={1500}
+              max={6500}
+              step={100}
+              unit="ms"
+              onChange={(v) => setTweak('duration', v)}
+            />
+
+            <TweakSection label="Palette" />
+            <TweakColor
+              label="Tonal world"
+              value={t.palette}
+              options={PALETTES}
+              onChange={(v) => setTweak('palette', v)}
+            />
+          </TweaksPanel>
+        </main>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

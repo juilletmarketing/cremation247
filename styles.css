@@ -105,9 +105,9 @@
     --accent:  #2E3A2C;     /* Vert quasi-noir */
     --warn:    #8B6A3E;     /* Terre cuite discrète */
 
-    --serif: "Wotfard", system-ui, sans-serif;
-    --sans:  "Wotfard", system-ui, sans-serif;
-    --mono:  "Wotfard", system-ui, sans-serif;
+    --serif: "Wotfard";
+    --sans:  "Wotfard";
+    --mono:  "Wotfard";
 
     --r: 2px;
     --maxw: 1280px;
@@ -125,8 +125,8 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5, h6 { font-family: "Wotfard", system-ui, sans-serif; font-weight: 700; }
-  p { font-family: "Wotfard", system-ui, sans-serif; font-weight: 400; }
+  h1, h2, h3, h4, h5, h6 { font-family: "Wotfard"; font-weight: 700; }
+  p { font-family: "Wotfard"; font-weight: 400; }
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
   @media (max-width: 720px){ .wrap { padding: 0 22px; } }
