@@ -125,6 +125,9 @@
     text-rendering: optimizeLegibility;
   }
 
+  h1, h2, h3, h4, h5, h6 { font-family: "Wotfard", system-ui, sans-serif; font-weight: 700; }
+  p { font-family: "Wotfard", system-ui, sans-serif; font-weight: 400; }
+
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
   @media (max-width: 720px){ .wrap { padding: 0 22px; } }
 
