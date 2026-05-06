@@ -3,11 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Cremation 24/7, Une crémation qui redonne à la terre</title>
+<title>Crémation 24/7, Une crémation qui redonne à la terre</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
 <!-- Mobile nav adjustments -->
@@ -61,7 +58,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap nav-inner">
     <a href="#" class="logo">
       <span class="logo-mark" aria-hidden="true"></span>
-      <span>Cremation <em style="font-style:italic;color:var(--sage)">24/7</em></span>
+      <span>Crémation <em style="font-style:italic;color:var(--sage)">24/7</em></span>
     </a>
     <div class="nav-links">
       <a href="#engagement">Notre engagement</a>
@@ -151,7 +148,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="aspire">
       <!-- Visual: a single tree that grows across three moments -->
-      <figure class="growth" aria-label="Trois étapes de croissance d'un arbre mémoriel">
+      <figure class="growth" aria-label="Trois étapes de croissance d'un arbre mémoriel" style="display:none">
         <svg viewBox="0 0 900 340" preserveAspectRatio="xMidYMid meet" class="growth-svg" role="img">
           <!-- Ground line -->
           <line x1="0" y1="290" x2="900" y2="290" stroke="var(--line)" stroke-width="1"/>
@@ -225,9 +222,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <figure class="planting-photo" aria-label="Famille plantant un arbre à la Forêt de la seconde vie">
-        <img src="uploads/bottom-up-tree.jpg" alt="Une famille plante ensemble un jeune arbre, les mains dans la terre" loading="lazy">
-        <figcaption>Plantation d'un arbre mémoriel dans le Boisé Serein, à la Forêt de la seconde vie, Sainte-Sophie.</figcaption>
+      <figure class="planting-photo" aria-label="Vidéo : Forêt de la Seconde Vie">
+        <div class="yt-facade" data-ytid="eEdr_lkgLI8" role="button" tabindex="0" aria-label="Lire la vidéo" style="position:relative;cursor:pointer;background:#1a1a1a;aspect-ratio:16/9;overflow:hidden;border-radius:8px;">
+          <img src="https://img.youtube.com/vi/eEdr_lkgLI8/maxresdefault.jpg" alt="Forêt de la Seconde Vie" loading="lazy" style="width:100%;height:100%;object-fit:cover;opacity:.85;display:block;">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="width:72px;height:72px;background:rgba(43,57,38,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;" onmouseover="this.style.transform='scale(1.08)';this.style.background='rgba(43,57,38,1)'" onmouseout="this.style.transform='scale(1)';this.style.background='rgba(43,57,38,0.85)'">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="var(--cream)" aria-hidden="true"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+          </div>
+        </div>
+        <figcaption>Enracinement d'un arbre commémoratif (Ginko Biloba) dans une zone forestière nommée le Jardin Perpétuel.</figcaption>
       </figure>
 
       <!-- Curve -->
@@ -238,7 +242,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Une crémation conventionnelle laisse une empreinte de 50 kg de CO₂ qui reste stable dans le temps. Chez nous, un seul arbre planté absorbe 25 kg par année, et sa capacité croît de manière exponentielle à mesure qu'il grandit.</p>
           <div class="curve-legend">
             <span class="lg"><span class="sw" style="background:var(--muted)"></span>Crémation conventionnelle</span>
-            <span class="lg"><span class="sw" style="background:var(--sage)"></span>Cremation 24/7</span>
+            <span class="lg"><span class="sw" style="background:var(--sage)"></span>Crémation 24/7</span>
           </div>
         </div>
         <svg class="curve" viewBox="0 0 640 280" preserveAspectRatio="none" aria-hidden="true">
@@ -295,7 +299,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
     <div class="section-head">
       <div class="num">02  Nos forfaits</div>
-      <h2>Trois manières de <em>dire au revoir</em>.<br>Deux, carbone négatif.</h2>
+      <h2>Trois manières de <em>dire au revoir</em>.<br>Deux sont entièrement carbo-négatives.</h2>
     </div>
 
     <p class="services-intro">
@@ -328,7 +332,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pkg-bottom">
           <div class="pkg-price">
             <span class="pkg-price-label">Forfait</span>
-            <span class="pkg-price-amt">1 500 $</span>
+            <span class="pkg-price-amt">1 499 $</span>
           </div>
           <a href="#planifier" class="btn ghost pkg-cta">Planifier<span class="arrow">→</span></a>
         </div>
@@ -348,12 +352,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Mise à jour du registre des défunts</li>
             <li>Prêt d'équipement pour la dispersion</li>
             <li>Environnement naturel respectant la dignité du défunt</li>
+            <li>Rituel d'enracinement accompagné d'un conseiller aux familles</li>
           </ul>
         </div>
         <div class="pkg-bottom">
           <div class="pkg-price">
             <span class="pkg-price-label">Forfait</span>
-            <span class="pkg-price-amt">2 825 $</span>
+            <span class="pkg-price-amt">2 824 $</span>
           </div>
           <a href="#planifier" class="btn pkg-cta">Planifier<span class="arrow">→</span></a>
         </div>
@@ -364,12 +369,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="pkg-eco-badge pkg-eco-green">Carboneutre en 24 mois</span>
           <div class="pkg-num">03</div>
           <h3 class="pkg-name">Héritage</h3>
-          <p class="pkg-lede">Forfait intégré, avec urne artisanale et accompagnement RRQ.</p>
+          <p class="pkg-lede">Forfait intégré, avec accompagnement RRQ complet.</p>
         </div>
         <div class="pkg-additions">
-          <div class="pkg-additions-label">Tout le forfait Carbo-négative, plus</div>
+          <div class="pkg-additions-label">Inclut les forfaits Conventionnelle et Carbo-négative, plus</div>
           <ul class="pkg-additions-list">
-            <li>Urne Natura en écorce naturelle, faite à la main par une artisane locale</li>
             <li>Prise en charge de la demande de prestation d'aide financière RRQ</li>
             <li>Accompagnement pour toute demande de prestation connexe</li>
           </ul>
@@ -377,7 +381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pkg-bottom">
           <div class="pkg-price">
             <span class="pkg-price-label">Forfait intégré</span>
-            <span class="pkg-price-amt">3 674 $</span>
+            <span class="pkg-price-amt">3 174 $</span>
           </div>
           <a href="#planifier" class="btn ghost pkg-cta">Planifier<span class="arrow">→</span></a>
         </div>
@@ -403,7 +407,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <blockquote class="manifesto" style="margin-top: 28px;">
       « On ne peut pas effacer une absence, mais on peut faire en sorte qu'elle nourrisse quelque chose. »
     </blockquote>
-    <div class="attr" style="margin-top: 32px; font-size: 14px; color: var(--muted);">Guillaume Marcoux, président de Crémation 24/7</div>
   </div>
 </section>
 
@@ -423,7 +426,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="cmp-col-sub">Offre standard au Québec</span>
         </div>
         <div class="cmp-b">
-          <span class="cmp-col-title">Cremation 24/7</span>
+          <span class="cmp-col-title">Crémation 24/7</span>
           <span class="cmp-col-sub">Notre engagement</span>
         </div>
       </div>
@@ -576,7 +579,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="foot-brand">
         <a href="#" class="logo">
           <span class="logo-mark" aria-hidden="true"></span>
-          <span>Cremation <em style="font-style:italic;color:var(--sage)">24/7</em></span>
+          <span>Crémation <em style="font-style:italic;color:var(--sage)">24/7</em></span>
         </a>
         <p class="foot-tagline">La première crémation<br>carbone-négative du Québec.</p>
         <p class="foot-mention">Un service de la <a href="https://www.foretdelasecondevie.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--ink-2)'" onmouseout="this.style.color='var(--muted)'">Forêt de la seconde vie</a>, cimetière écoforestier certifié.</p>
@@ -597,7 +600,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul>
           <li><a href="tel:4385006288">(438) 500-6288</a></li>
           <li>Disponible 24 h / 7 j</li>
-          <li style="margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.4;">835 Chemin de l'Achigan E<br>Sainte-Sophie, QC J5J 2P9</li>
+          <li style="margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.4;">835 Chemin de l'Achigan EST<br>Sainte-Sophie, QC J5J 2P9</li>
         </ul>
         <a href="#planifier" class="btn sm" style="margin-top: 20px;">Planifier une crémation<span class="arrow">→</span></a>
       </div>
@@ -605,11 +608,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="foot-bottom">
-      <span>© 2026 Cremation 24/7. Conception par <a href="https://www.juilletmarketing.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--ink-2)'" onmouseout="this.style.color='var(--muted)'">Juillet Marketing</a>.</span>
+      <span>© 2026 Crémation 24/7. Conception par <a href="https://www.juilletmarketing.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--ink-2)'" onmouseout="this.style.color='var(--muted)'">Juillet Marketing</a>.</span>
       <span class="mono">Servitude de conservation forestière à perpétuité</span>
     </div>
   </div>
 </footer>
+
+<!-- YouTube facade loader -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.yt-facade').forEach(function(facade) {
+    function load() {
+      var id = facade.dataset.ytid;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.style.cssText = 'width:100%;height:100%;border:none;position:absolute;inset:0;';
+      facade.innerHTML = '';
+      facade.appendChild(iframe);
+    }
+    facade.addEventListener('click', load);
+    facade.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); }
+    });
+  });
+});
+</script>
 
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
