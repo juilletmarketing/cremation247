@@ -248,17 +248,6 @@
     background: var(--bg-2);
     border: 1px solid var(--line-2);
   }
-  .hero-visual .stamp {
-    position: absolute; bottom: 20px; right: 20px;
-    width: 116px; height: 116px; border-radius: 50%;
-    border: 1px solid var(--ink);
-    display: flex; align-items: center; justify-content: center;
-    text-align: center;
-    background: rgba(248,245,236,.85);
-    backdrop-filter: blur(4px);
-  }
-  .stamp .sm-serif { font-family: var(--serif); font-weight: 500; font-size: 28px; line-height: 1; color: var(--ink); }
-  .stamp .sm-label { font-family: var(--mono); font-weight: 500; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; margin-top: 6px; color: var(--ink-2); }
 
   /* ---------- MARQUEE / PROOF STRIP ---------- */
   .strip {
@@ -722,6 +711,9 @@
   .pkg-eco-green { background: var(--sage); color: var(--cream); }
   .pkg-featured .pkg-eco-green { background: rgba(199,207,182,.2); color: var(--sage-3); border: 1px solid rgba(199,207,182,.25); }
 
+  .pkg-top-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .pkg-top-row .pkg-num { margin-bottom: 0; }
+  .pkg-top-row .pkg-eco-badge { margin-bottom: 0; }
   .pkg-num { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
   .pkg-featured .pkg-num { color: rgba(199,207,182,.55); }
   .pkg-name { font-family: var(--serif); font-size: 30px; line-height: 1.05; letter-spacing: -.015em; margin: 0 0 10px; font-weight: 700; }
